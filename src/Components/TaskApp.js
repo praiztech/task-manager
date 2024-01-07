@@ -6,7 +6,7 @@ export default function TaskApp() {
   const [tasks, setTasks] = useState([]);
   return (
     <>
-      <NewTask />
+      <NewTask setTasks={setTasks} />
       <AllTasks tasks={tasks} />
     </>
   );

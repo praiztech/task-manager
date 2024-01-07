@@ -7,7 +7,6 @@ export default function App() {
         <TaskApp />
       </main>
       <footer>Built by Praise Agbabiaka</footer>
-      <div role="status" className="visually-hidden"></div>
     </div>
   );
 }
