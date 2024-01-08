@@ -1,3 +1,3 @@
 # Task Manager
 
-A basic task management app built with ReactJS.
+An accessible task management app built with ReactJS.
