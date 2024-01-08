@@ -1,13 +1,13 @@
 import { useState } from "react";
-import NewTask from "./NewTask";
-import AllTasks from "./AllTasks";
+import AddTask from "./AddTask";
+import ShowTasks from "./ShowTasks";
 
 export default function TaskApp() {
   const [tasks, setTasks] = useState([]);
   return (
     <>
-      <NewTask setTasks={setTasks} />
-      <AllTasks tasks={tasks} />
+      <AddTask setTasks={setTasks} />
+      <ShowTasks tasks={tasks} />
     </>
   );
 }

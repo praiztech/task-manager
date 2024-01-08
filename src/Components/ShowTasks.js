@@ -1,6 +1,6 @@
 import TaskList from "./TaskLists";
 
-export default function AllTasks({tasks}) {
+export default function ShowTasks({tasks}) {
   return (
     <>
       <h1>My Tasks</h1>

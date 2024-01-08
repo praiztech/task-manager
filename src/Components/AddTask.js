@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import TaskForm from "./TaskForm";
 
-export default function NewTask({setTasks}) {
+export default function AddTask({setTasks}) {
   const [showTaskForm, setShowTaskForm] = useState(false);
   const addBtnRef = useRef(null);
 

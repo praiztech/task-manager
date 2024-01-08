@@ -6,7 +6,7 @@ export default function App() {
       <main>
         <TaskApp />
       </main>
-      <footer>Built by Praise Agbabiaka</footer>
+      <footer>Designed & Built by Praise Agbabiaka</footer>
     </div>
   );
 }
