@@ -5,16 +5,11 @@ export default function TaskForm({setTasks}) {
   const [newTaskName, setNewTaskName] = useState('');
   const statusRef = useRef(null);
   const inputRef = useRef(null);
+  const taskId = useRef(null); // self-incrementing counter 4 setting unique ids on tasks
 
-  // self-incrementing counter 4 setting unique ids on tasks
-  const taskId = useRef(null); 
-  // initializing during 1st render prevents unnecessary computation subsequently - useRef reference
-  if (taskId.current === null) taskId.current = localStorage.getItem('taskId') ?? 0;
-
-  // persists taskId for subsequent use
   useEffect(() => {
-    localStorage.setItem('taskId', taskId.current);
-  }, [taskId.current]);
+    taskId.current = localStorage.getItem('taskId') ?? 0;
+  }, []);
 
   function updateTaskName(value) {
     setNewTaskName(value);
@@ -27,9 +22,11 @@ export default function TaskForm({setTasks}) {
       setIsSubmittingEmptyTask(true);
       inputRef.current.focus();
     } else {
+      const newTaskId = ++taskId.current;
+      localStorage.setItem('taskId', newTaskId);
       setTasks((prevTasks) => {
         return [
-          {id: taskId.current++, name: newTaskName},
+          {id: newTaskId, name: newTaskName},
           ...prevTasks
         ]
       });
