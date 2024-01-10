@@ -1,6 +1,6 @@
 export default function TaskList({tasks}) {
   return (
-    <ul>
+    <ul role="list">
       {
         tasks.map((task) => {
           return (
