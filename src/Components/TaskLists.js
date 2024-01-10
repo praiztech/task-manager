@@ -1,6 +1,8 @@
 import deleteIcon from "../images/delete-icon.svg";
+import { useTasks } from "../context/TasksProvider";
 
-export default function TaskList({tasks}) {
+export default function TaskList() {
+  const tasks = useTasks();
   return (
     <ul role="list">
       {

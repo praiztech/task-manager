@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react";
+import { useTasksSetter } from "../context/TasksProvider";
 
-export default function TaskForm({setTasks}) {
+export default function TaskForm() {
+  const setTasks = useTasksSetter();
   const [isSubmittingEmptyTask, setIsSubmittingEmptyTask] = useState(false);
   const [newTaskName, setNewTaskName] = useState('');
   const statusRef = useRef(null);
