@@ -1,3 +1,5 @@
+import deleteIcon from "../images/delete-icon.svg";
+
 export default function TaskList({tasks}) {
   return (
     <ul role="list">
@@ -9,7 +11,7 @@ export default function TaskList({tasks}) {
               <label htmlFor={`${task.id}-checkbox`} id={`${task.id}-name`}>{task.name}</label>
               <button type="button" aria-labelledby={`${task.id}-delete ${task.id}-name`}>
                 <span id={`${task.id}-delete`} hidden>Delete</span>
-                <svg></svg>
+                <img src={deleteIcon} alt="" />
               </button>
             </li>
           )
