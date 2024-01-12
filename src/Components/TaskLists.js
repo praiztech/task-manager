@@ -1,19 +1,24 @@
 import deleteIcon from "../images/delete-icon.svg";
-import { useTasks, useTasksSetter } from "../context/TasksProvider";
+import { useTasks, useTasksSetter, useAddBtnRef } from "../context/TasksProvider";
 import { useRef } from "react";
 
 export default function TaskList() {
   const tasks = useTasks();
   const setTasks = useTasksSetter();
+  const addBtnRef = useAddBtnRef();
   const task2FocusOnDeleteIdRef = useRef(null);
 
   function handleTaskDelete(task2DeleteId, task2DeleteIndex) {
-    const task2FocusOnDeleteIndex = (
-      // if task 2 delete is last on list, focus preceding task otherwise focus next task
-      task2DeleteIndex === tasks.length - 1 ? task2DeleteIndex - 1 : task2DeleteIndex + 1
-    );
-    task2FocusOnDeleteIdRef.current = tasks[task2FocusOnDeleteIndex].id;
     setTasks(tasks.filter((task) => task.id !== task2DeleteId));
+    if (tasks.length === 1) { // sole task on list to be deleted so no other task to focus
+      addBtnRef.current?.focus();
+    } else {
+      const task2FocusOnDeleteIndex = (
+        // if task 2 delete is last on list, focus will be set 2 preceding task otherwise next task
+        task2DeleteIndex === tasks.length - 1 ? task2DeleteIndex - 1 : task2DeleteIndex + 1
+      );
+      task2FocusOnDeleteIdRef.current = tasks[task2FocusOnDeleteIndex].id;
+    }
   }
 
   return (

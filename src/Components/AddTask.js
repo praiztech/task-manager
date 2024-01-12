@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { useAddBtnRef } from "../context/TasksProvider";
 import TaskForm from "./TaskForm";
 
 export default function AddTask() {
   const [showTaskForm, setShowTaskForm] = useState(false);
-  const addBtnRef = useRef(null);
+  const addBtnRef = useAddBtnRef();
 
   useEffect(() => {
     function hideTaskFormOnEscape(evt) {
