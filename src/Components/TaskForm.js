@@ -28,7 +28,7 @@ export default function TaskForm() {
       localStorage.setItem('taskId', newTaskId);
       setTasks((prevTasks) => {
         return [
-          {id: newTaskId, name: newTaskName},
+          {id: newTaskId, name: newTaskName, done: false},
           ...prevTasks
         ]
       });
@@ -43,11 +43,10 @@ export default function TaskForm() {
       {
         isSubmittingEmptyTask ? (
           <form onSubmit={addNewTask}>
-            <label htmlFor="task-name">Enter a task</label>
+            <label htmlFor="new-task-name">Enter a task</label>
             <input 
               type="text" 
-              name="task" 
-              id="task-name" 
+              id="new-task-name"
               autoComplete="off" 
               aria-invalid="true"
               aria-describedby="error-text"
@@ -64,11 +63,10 @@ export default function TaskForm() {
           </form>
         ) : (
           <form onSubmit={addNewTask}>
-            <label htmlFor="task-name">Enter a task</label>
+            <label htmlFor="new-task-name">Enter a task</label>
             <input 
               type="text" 
-              name="task" 
-              id="task-name" 
+              id="new-task-name"
               autoComplete="off" 
               value={newTaskName}
               onChange={(evt) => updateTaskName(evt.target.value)} 

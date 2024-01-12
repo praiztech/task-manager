@@ -21,6 +21,13 @@ export default function TaskList() {
     }
   }
 
+  function toggleTaskDone(taskId, newDoneValue) {
+    const newTaskList = tasks.map((task) => {
+      return task.id !== taskId ? task : {...task, done: newDoneValue};
+    });
+    setTasks(newTaskList);
+  }
+
   return (
     <ul role="list">
       {
@@ -30,6 +37,8 @@ export default function TaskList() {
               <input 
                 type="checkbox" 
                 id={`${task.id}-checkbox`} 
+                checked={task.done}
+                onChange={(evt) => toggleTaskDone(task.id, evt.target.checked)}
                 ref={
                   task.id === task2FocusOnDeleteIdRef.current ?
                   // inline ref callback ensures it's invoked on every render
