@@ -8,14 +8,14 @@ export default function AddTask() {
 
   useEffect(() => {
     function hideTaskFormOnEscape(evt) {
-      if (evt.key === 'Escape') {
+      if (evt.key === 'Escape' && showTaskForm) {
         setShowTaskForm(false);
         addBtnRef.current.focus();
       }
     }
     document.addEventListener('keydown', hideTaskFormOnEscape);
     return () => document.removeEventListener('keydown', hideTaskFormOnEscape);
-  }, []);
+  }, [showTaskForm]); // ensures hideTaskFormOnEscape accesses the most recent value of showTaskForm
 
   function hideTaskFormOnFocusOut(evt) {
     if (!evt.currentTarget.contains(evt.relatedTarget) && showTaskForm) setShowTaskForm(false);
