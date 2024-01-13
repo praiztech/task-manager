@@ -37,7 +37,7 @@ export default function TaskForm() {
           ...prevTasks
         ]
       });
-      statusRef.current.textContent = `${newTaskName} added`;
+      statusRef.current.textContent = `Success: ${newTaskName} added.`;
       setNewTaskName(''); // clear input field after task is added
     }
   }
@@ -59,10 +59,7 @@ export default function TaskForm() {
               ref={inputRef}
             />
             <button type="submit">Add</button>
-            <p id="error-text">
-              <span className="visually-hidden">Error: </span>
-              Task name cannot be blank. Enter a task to add.
-            </p>
+            <p id="error-text">Error: Task name cannot be blank. Enter a task to add.</p>
             <div role="status" ref={statusRef}></div>
           </form>
         ) : (
