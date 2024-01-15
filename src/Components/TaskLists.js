@@ -1,4 +1,4 @@
-import deleteIcon from "../images/delete-icon.svg";
+import { DeleteIcon } from "../icons/Icons";
 import { useTasks, useTasksSetter, useAddBtnRef } from "../context/TasksProvider";
 import { useRef } from "react";
 
@@ -60,7 +60,7 @@ export default function TaskList() {
                 onClick={() => handleTaskDelete(task.id, index)}
               >
                 <span id={`${task.id}-delete`} hidden>Delete</span>
-                <img src={deleteIcon} alt="" />
+                <DeleteIcon />
               </button>
             </li>
           )

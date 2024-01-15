@@ -1,4 +1,4 @@
-import addIcon from "../images/add-icon.svg";
+import { AddIcon } from "../icons/Icons";
 import { useState, useRef, useEffect } from "react";
 import { useTasksSetter } from "../context/TasksProvider";
 
@@ -64,7 +64,7 @@ export default function TaskForm() {
               </div>
               <button type="submit">
                 <span className="visually-hidden">Add</span>
-                <img src={addIcon} alt="" />
+                <AddIcon />
               </button>
             </div>
             <p id="error-text">Error: Task name cannot be blank. Enter a task to add.</p>
@@ -86,7 +86,7 @@ export default function TaskForm() {
               </div>
               <button type="submit">
                 <span className="visually-hidden">Add</span>
-                <img src={addIcon} alt="" />
+                <AddIcon />
               </button>
             </div>
             <div role="status" ref={statusRef}></div>
