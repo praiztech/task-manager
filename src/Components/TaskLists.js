@@ -50,7 +50,10 @@ export default function TaskList() {
                   } : undefined
                 }
               />
-              <label htmlFor={`${task.id}-checkbox`} id={`${task.id}-name`}>{task.name}</label>
+              {/* label-wrapper ensures inadvertent click on space after label doesn't activate checkbox */}
+              <span className="label-wrapper">
+                <label htmlFor={`${task.id}-checkbox`} id={`${task.id}-name`}>{task.name}</label>
+              </span>
               <button 
                 type="button" 
                 aria-labelledby={`${task.id}-delete ${task.id}-name`}
