@@ -1,3 +1,4 @@
+import addIcon from "../images/add-icon.svg";
 import { useEffect, useState } from "react";
 import { useAddBtnRef } from "../context/TasksProvider";
 import TaskForm from "./TaskForm";
@@ -18,17 +19,23 @@ export default function AddTask() {
   }, [showTaskForm]); // ensures hideTaskFormOnEscape accesses the most recent value of showTaskForm
 
   function hideTaskFormOnFocusOut(evt) {
-    if (!evt.currentTarget.contains(evt.relatedTarget) && showTaskForm) setShowTaskForm(false);
+    if (
+      showTaskForm &&
+      evt.relatedTarget !== null && // 4 when user clicks on the empty space within the form
+      !evt.currentTarget.contains(evt.relatedTarget)
+    ) setShowTaskForm(false);
   }
 
   return (
-    <div onBlur={hideTaskFormOnFocusOut}>
+    <div className="add-task" onBlur={hideTaskFormOnFocusOut}>
       <button 
+        className="add-task-trigger"
         type="button" 
         aria-expanded={showTaskForm}
         onClick={() => setShowTaskForm((prevTaskFormVisibility) => !prevTaskFormVisibility)}
         ref={addBtnRef}
       >
+        <img src={addIcon} alt="" />
         Add New Task
       </button>
       {showTaskForm && <TaskForm />}

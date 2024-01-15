@@ -1,3 +1,4 @@
+import addIcon from "../images/add-icon.svg";
 import { useState, useRef, useEffect } from "react";
 import { useTasksSetter } from "../context/TasksProvider";
 
@@ -47,33 +48,47 @@ export default function TaskForm() {
       {
         submittedTask === 'blank' ? (
           <form onSubmit={addNewTask}>
-            <label htmlFor="new-task-name">Enter a task</label>
-            <input 
-              type="text" 
-              id="new-task-name"
-              autoComplete="off" 
-              aria-invalid="true"
-              aria-describedby="error-text"
-              value={newTaskName}
-              onChange={(evt) => updateTaskName(evt.target.value)} 
-              ref={inputRef}
-            />
-            <button type="submit">Add</button>
+            <div className="task-form-box">
+              <div className="task-form-entry-box">
+                <input 
+                  type="text" 
+                  id="new-task-name"
+                  autoComplete="off" 
+                  aria-invalid="true"
+                  aria-describedby="error-text"
+                  value={newTaskName}
+                  onChange={(evt) => updateTaskName(evt.target.value)} 
+                  ref={inputRef}
+                />
+                <label htmlFor="new-task-name">Enter a task</label>
+              </div>
+              <button type="submit">
+                <span className="visually-hidden">Add</span>
+                <img src={addIcon} alt="" />
+              </button>
+            </div>
             <p id="error-text">Error: Task name cannot be blank. Enter a task to add.</p>
             <div role="status" ref={statusRef}></div>
           </form>
         ) : (
           <form onSubmit={addNewTask}>
-            <label htmlFor="new-task-name">Enter a task</label>
-            <input 
-              type="text" 
-              id="new-task-name"
-              autoComplete="off" 
-              value={newTaskName}
-              onChange={(evt) => updateTaskName(evt.target.value)} 
-              ref={inputRef}
-              />
-            <button type="submit">Add</button>
+            <div className="task-form-box">
+              <div className="task-form-entry-box">
+                <input 
+                  type="text" 
+                  id="new-task-name"
+                  autoComplete="off" 
+                  value={newTaskName}
+                  onChange={(evt) => updateTaskName(evt.target.value)} 
+                  ref={inputRef}
+                />
+                <label htmlFor="new-task-name">Enter a task</label>
+              </div>
+              <button type="submit">
+                <span className="visually-hidden">Add</span>
+                <img src={addIcon} alt="" />
+              </button>
+            </div>
             <div role="status" ref={statusRef}></div>
           </form>
         )
