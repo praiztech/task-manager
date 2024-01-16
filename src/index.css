@@ -191,7 +191,6 @@ main {
 
 .tasks li {
   display: flex;
-  gap: calc(var(--base-spacing) * 0.75);
   border-bottom: 0.1rem solid #949494;
   padding: var(--base-spacing) calc(var(--base-spacing) * 0.2);
 }
@@ -231,6 +230,8 @@ main {
 
 .tasks .label-wrapper {
   flex: 1;
+  margin-left: calc(var(--base-spacing) * 0.75);
+  margin-right: calc(var(--base-spacing) * 1.5);
 }
 
 .tasks label {
