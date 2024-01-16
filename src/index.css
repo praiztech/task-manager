@@ -69,9 +69,16 @@ button:focus-visible {
   fill: #000;
 }
 
+.content-bg {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: var(--base-spacing) 0;
+}
+
 .content {
-  --content-width: 100%;
-  --min-content-height: 100vh; /* 100vh coz content is only bcums a flex item @ 360px viewport */
+  --content-width: 97.5%;
+  --min-content-height: calc(100vh - calc(var(--base-spacing) * 2));
   width: var(--content-width);
   min-height: var(--min-content-height);
   padding: calc(var(--base-spacing) * 1.5);
@@ -178,11 +185,6 @@ main {
   margin: calc(var(--base-spacing) * 0.8) 0;
   font-size: calc(var(--base-font-size) * 1.35);
   line-height: 1.1;
-}
-
-.tasks h1,
-.no-tasks {
-  text-align: center;
 }
 
 .tasks ul {
