@@ -1,4 +1,4 @@
-import TaskApp from "./components/TaskApp";
+import TaskApp from "./Components/TaskApp";
 
 export default function App() {
   return (
