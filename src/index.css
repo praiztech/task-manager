@@ -257,3 +257,19 @@ footer {
     fill: currentColor;
   }
 }
+
+@media screen and (min-width: 48em) {
+  html {
+    --base-font-size: 1.8rem;
+  }
+
+  .content {
+    --content-width: 65%;
+  }
+}
+
+@media screen and (min-width: 64em) {
+  .content {
+    --content-width: 40%;
+  }
+}
