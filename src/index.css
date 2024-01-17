@@ -177,6 +177,18 @@ main {
   height: 100%;
 }
 
+.add-task .prefix {
+  font-weight: 600;
+}
+
+.add-task [role="status"] {
+  color: #003e29;
+}
+
+.add-task .error-text {
+  color: #d41c1c;
+}
+
 .tasks {
   margin: calc(var(--base-spacing) * 2) 0;
 }
