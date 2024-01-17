@@ -242,6 +242,11 @@ main {
   transform: scale(1);
 }
 
+.tasks input:checked + .label-wrapper label {
+  color: #666;
+  text-decoration: line-through;
+}
+
 .tasks .label-wrapper {
   flex: 1;
   margin-left: calc(var(--base-spacing) * 0.75);
