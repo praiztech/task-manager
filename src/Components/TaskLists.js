@@ -8,7 +8,8 @@ export default function TaskList() {
   const setTasks = useTasksSetter();
   const addBtnRef = useAddBtnRef();
   const task2DeleteIdRef = useRef(null);
-  const task2FocusOnModalCloseRef = useRef(null);
+  const task2FocusOnDeleteCancelIdRef = useRef(null);
+  const task2FocusOnDeleteIdRef = useRef(null);
   const [showTaskDeleteModal, setShowTaskDeleteModal] = useState(false);
 
   function handleDeleteModalDisplay(task2DeleteId) {
@@ -18,7 +19,7 @@ export default function TaskList() {
 
   function handleTaskDeleteCancel(task2DeleteId) {
     // set focus back to the triggering ctrl - delete btn, if delete is canceled
-    task2FocusOnModalCloseRef.current = task2DeleteId;
+    task2FocusOnDeleteCancelIdRef.current = task2DeleteId;
     task2DeleteIdRef.current = null; // reset - delete handled
     setShowTaskDeleteModal(false);
   } 
@@ -32,7 +33,7 @@ export default function TaskList() {
         // if task 2 delete is last on list, set focus 2 preceding task otherwise next task
         task2DeleteIndex === tasks.length - 1 ? task2DeleteIndex - 1 : task2DeleteIndex + 1
       );
-      task2FocusOnModalCloseRef.current = tasks[task2FocusOnDeleteIndex].id;
+      task2FocusOnDeleteIdRef.current = tasks[task2FocusOnDeleteIndex].id;
     }
     task2DeleteIdRef.current = null; // reset - delete handled
     setShowTaskDeleteModal(false);
@@ -57,11 +58,11 @@ export default function TaskList() {
                 checked={task.done}
                 onChange={(evt) => toggleTaskDone(task.id, evt.target.checked)}
                 ref={
-                  task.id === task2FocusOnModalCloseRef.current ?
+                  task.id === task2FocusOnDeleteIdRef.current ?
                   // inline ref callback ensures it's invoked on every render
                   (node) => {
                     if (node !== null) {
-                      task2FocusOnModalCloseRef.current = null; // reset
+                      task2FocusOnDeleteIdRef.current = null; // reset
                       node.focus();
                     }
                   } : undefined
@@ -77,11 +78,11 @@ export default function TaskList() {
                   aria-labelledby={`${task.id}-delete ${task.id}-name`}
                   onClick={() => handleDeleteModalDisplay(task.id)}
                   ref={
-                    task.id === task2FocusOnModalCloseRef.current ?
+                    task.id === task2FocusOnDeleteCancelIdRef.current ?
                       // inline ref callback ensures it's invoked on every render
                       (node) => {
                         if (node !== null) {
-                          task2FocusOnModalCloseRef.current = null; // reset
+                          task2FocusOnDeleteCancelIdRef.current = null; // reset
                           node.focus();
                         }
                       } : undefined
