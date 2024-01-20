@@ -8,7 +8,7 @@ export default function TaskDeleteModal({ taskName, onCancel, onDelete }) {
   }, []);
 
   return (
-    <dialog className="task-delete-modal" ref={deleteModalRef}>
+    <dialog className="task-delete-modal" onCancel={onCancel} ref={deleteModalRef}>
       <p>Are you sure you want to delete "{taskName}" task?</p>
       <div className="modal-actions" style={{display:"flex", justifyContent:"space-evenly"}}>
         <button 
