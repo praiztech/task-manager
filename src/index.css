@@ -49,6 +49,12 @@ body {
   font: var(--base-font-size)/1.5 var(--base-font, sans-serif);
 }
 
+h1,
+h2 {
+  margin: calc(var(--base-spacing) * 0.8) 0;
+  line-height: 1.1;
+}
+
 button {
   cursor: pointer;
 }
@@ -194,9 +200,7 @@ main {
 }
 
 .tasks h1 {
-  margin: calc(var(--base-spacing) * 0.8) 0;
   font-size: calc(var(--base-font-size) * 1.35);
-  line-height: 1.1;
 }
 
 .tasks ul {
@@ -261,6 +265,49 @@ main {
   width: var(--task-ctrl-size);
   height: var(--task-ctrl-size);
   border-radius: 0.2rem; /* 4 focus styling */
+}
+
+.tasks dialog {
+  position: fixed;
+  width: min(40ch, 100% - 3rem);
+  margin: auto;
+  padding: var(--base-spacing);
+  border: 0.1rem solid transparent; /* 4 contrast themes */
+  box-shadow: 0 0 1.2rem #949494;
+  background-color: #eef;
+  color: inherit;
+}
+
+.tasks dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .content.modal-open {
+    filter: blur(2px);
+  }
+}
+
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .content.modal-open {
+    filter: none;
+  }
+
+  .tasks dialog::backdrop {
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+  }
+}
+
+.tasks dialog h2 {
+  font-size: calc(var(--base-font-size) * 1.2);
+  text-align: center;
+}
+
+.tasks dialog .cta-wrapper {
+  display: flex;
+  justify-content: space-around;
+  margin-top: calc(var(--base-spacing) * 0.4);
 }
 
 footer {

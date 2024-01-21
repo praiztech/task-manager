@@ -72,34 +72,32 @@ export default function TaskList() {
               <span className="label-wrapper">
                 <label htmlFor={`${task.id}-checkbox`} id={`${task.id}-name`}>{task.name}</label>
               </span>
-              <div className="delete-task">
-                <button 
-                  type="button" 
-                  aria-labelledby={`${task.id}-delete ${task.id}-name`}
-                  onClick={() => handleDeleteModalDisplay(task.id)}
-                  ref={
-                    task.id === task2FocusOnDeleteCancelIdRef.current ?
-                      // inline ref callback ensures it's invoked on every render
-                      (node) => {
-                        if (node !== null) {
-                          task2FocusOnDeleteCancelIdRef.current = null; // reset
-                          node.focus();
-                        }
-                      } : undefined
-                  }
-                >
-                  <span id={`${task.id}-delete`} hidden>Delete</span>
-                  <DeleteIcon />
-                </button>
-                {
-                  showTaskDeleteModal && task2DeleteIdRef.current === task.id &&
-                  <TaskDeleteModal 
-                    taskName={task.name}  
-                    onCancel={() => handleTaskDeleteCancel(task.id)} 
-                    onDelete={() => handleTaskDelete(task.id, index)}
-                  />
+              <button 
+                type="button" 
+                aria-labelledby={`${task.id}-delete ${task.id}-name`}
+                onClick={() => handleDeleteModalDisplay(task.id)}
+                ref={
+                  task.id === task2FocusOnDeleteCancelIdRef.current ?
+                    // inline ref callback ensures it's invoked on every render
+                    (node) => {
+                      if (node !== null) {
+                        task2FocusOnDeleteCancelIdRef.current = null; // reset
+                        node.focus();
+                      }
+                    } : undefined
                 }
-              </div>
+              >
+                <span id={`${task.id}-delete`} hidden>Delete</span>
+                <DeleteIcon />
+              </button>
+              {
+                showTaskDeleteModal && task2DeleteIdRef.current === task.id &&
+                <TaskDeleteModal 
+                  taskName={task.name}  
+                  onCancel={() => handleTaskDeleteCancel(task.id)} 
+                  onDelete={() => handleTaskDelete(task.id, index)}
+                />
+              }
             </li>
           )
         })
