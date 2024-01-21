@@ -1,14 +1,10 @@
-import TaskApp from "./Components/TaskApp";
+import ModalProvider from "./context/ModalProvider";
+import AppContent from "./Components/AppContent";
 
 export default function App() {
   return (
-    <div className="content-bg">
-      <div className="content">
-        <main>
-          <TaskApp />
-        </main>
-        <footer>Designed & Built by Praise Agbabiaka</footer>
-      </div>
-    </div>
+    <ModalProvider>
+      <AppContent />
+    </ModalProvider>
   );
 }

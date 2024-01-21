@@ -1,27 +1,29 @@
 import { DeleteIcon } from "../icons/Icons";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useTasks, useTasksSetter, useAddBtnRef } from "../context/TasksProvider";
+import { useShowModal, useShowModalSetter } from "../context/ModalProvider";
 import TaskDeleteModal from "./TaskDeleteModal";
 
 export default function TaskList() {
   const tasks = useTasks();
   const setTasks = useTasksSetter();
+  const showModal = useShowModal();
+  const setShowModal = useShowModalSetter();
   const addBtnRef = useAddBtnRef();
   const task2DeleteIdRef = useRef(null);
-  const task2FocusOnDeleteCancelIdRef = useRef(null);
   const task2FocusOnDeleteIdRef = useRef(null);
-  const [showTaskDeleteModal, setShowTaskDeleteModal] = useState(false);
+  const task2FocusOnDeleteCancelIdRef = useRef(null);
 
   function handleDeleteModalDisplay(task2DeleteId) {
     task2DeleteIdRef.current = task2DeleteId;
-    setShowTaskDeleteModal(true);
+    setShowModal(true);
   }
 
   function handleTaskDeleteCancel(task2DeleteId) {
     // set focus back to the triggering ctrl - delete btn, if delete is canceled
     task2FocusOnDeleteCancelIdRef.current = task2DeleteId;
     task2DeleteIdRef.current = null; // reset - delete handled
-    setShowTaskDeleteModal(false);
+    setShowModal(false);
   } 
 
   function handleTaskDelete(task2DeleteId, task2DeleteIndex) {
@@ -36,7 +38,7 @@ export default function TaskList() {
       task2FocusOnDeleteIdRef.current = tasks[task2FocusOnDeleteIndex].id;
     }
     task2DeleteIdRef.current = null; // reset - delete handled
-    setShowTaskDeleteModal(false);
+    setShowModal(false);
   }
 
   function toggleTaskDone(taskId, newDoneValue) {
@@ -91,7 +93,7 @@ export default function TaskList() {
                 <DeleteIcon />
               </button>
               {
-                showTaskDeleteModal && task2DeleteIdRef.current === task.id &&
+                showModal && task2DeleteIdRef.current === task.id &&
                 <TaskDeleteModal 
                   taskName={task.name}  
                   onCancel={() => handleTaskDeleteCancel(task.id)} 
