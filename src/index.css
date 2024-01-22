@@ -262,9 +262,12 @@ main {
 }
 
 .tasks button {
+  border-radius: 0.2rem;
+}
+
+.tasks .delete-btn {
   width: var(--task-ctrl-size);
   height: var(--task-ctrl-size);
-  border-radius: 0.2rem; /* 4 focus styling */
 }
 
 .tasks dialog {
@@ -306,8 +309,17 @@ main {
 
 .tasks dialog .cta-wrapper {
   display: flex;
-  justify-content: space-around;
-  margin-top: calc(var(--base-spacing) * 0.4);
+  justify-content: space-evenly;
+  margin-top: calc(var(--base-spacing) * 0.75);
+}
+
+.tasks dialog button {
+  padding: calc(var(--base-spacing) * 0.6);
+}
+
+.tasks dialog button:focus {
+  background-color: #0259ca;
+  color: #fefefe;
 }
 
 footer {

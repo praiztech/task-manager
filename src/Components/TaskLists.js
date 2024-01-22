@@ -76,6 +76,7 @@ export default function TaskList() {
               </span>
               <button 
                 type="button" 
+                className="delete-btn"
                 aria-labelledby={`${task.id}-delete ${task.id}-name`}
                 onClick={() => handleDeleteModalDisplay(task.id)}
                 ref={
