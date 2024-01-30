@@ -9,7 +9,7 @@ export default function ShowTasks() {
       <h1>My Tasks</h1>
       {
         tasks.length === 0 ? (
-          <p>There are no available tasks.</p>
+          <p>There are no available tasks. Add new tasks you'd like to work on.</p>
         ) : (
           <TaskList />
         )
