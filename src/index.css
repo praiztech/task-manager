@@ -315,9 +315,6 @@ main {
 
 .tasks dialog button {
   padding: calc(var(--base-spacing) * 0.6);
-}
-
-.tasks dialog button:focus {
   background-color: #0259ca;
   color: #fefefe;
 }
