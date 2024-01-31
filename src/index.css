@@ -123,9 +123,16 @@ main {
   align-items: center;
 }
 
-.add-task-trigger .add-icon {
+.add-task-trigger .show-icon {
   width: var(--base-font-size);
   height: var(--base-font-size);
+  fill: currentColor;
+  transition: transform 0.2s linear;
+}
+
+.add-task-trigger[aria-expanded="true"] .show-icon {
+  transform: rotate(90deg);
+  transform-origin: center;
 }
 
 .add-task form {
