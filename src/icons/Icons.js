@@ -1,6 +1,14 @@
+export function ShowIcon() {
+  return (
+    <svg className="show-icon" version="1.1" viewBox="0 0 20 20" aria-hidden>
+      <path d="M15.795 11.272L7.795 16.272C6.79593 16.8964 5.5 16.1782 5.5 15L5.5 5.00002C5.5 3.82186 6.79593 3.1036 7.795 3.72802L15.795 8.72802C16.735 9.31552 16.735 10.6845 15.795 11.272Z"/>
+    </svg>
+  );
+}
+
 export function AddIcon() {
   return (
-    <svg className="add-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden>
+    <svg className="add-icon" version="1.1" viewBox="0 0 24 24" aria-hidden>
       <g>
         <rect x="11" y="5" width="2" height="14"/><rect x="5" y="11" width="14" height="2"/>
       </g>
@@ -10,7 +18,7 @@ export function AddIcon() {
 
 export function DeleteIcon() {
   return (
-    <svg className="delete-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 482.428 482.429" aria-hidden>
+    <svg className="delete-icon" version="1.1" viewBox="0 0 482.428 482.429" aria-hidden>
       <g>
         <path d="M381.163,57.799h-75.094C302.323,25.316,274.686,0,241.214,0c-33.471,0-61.104,25.315-64.85,57.799h-75.098
           c-30.39,0-55.111,24.728-55.111,55.117v2.828c0,23.223,14.46,43.1,34.83,51.199v260.369c0,30.39,24.724,55.117,55.112,55.117
