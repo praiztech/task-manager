@@ -1,4 +1,4 @@
-import { AddIcon } from "../icons/Icons";
+import { ShowIcon } from "../icons/Icons";
 import { useEffect, useState } from "react";
 import { useAddBtnRef } from "../context/TasksProvider";
 import TaskForm from "./TaskForm";
@@ -35,7 +35,7 @@ export default function AddTask() {
         onClick={() => setShowTaskForm((prevTaskFormVisibility) => !prevTaskFormVisibility)}
         ref={addBtnRef}
       >
-        <AddIcon />
+        <ShowIcon />
         Add New Task
       </button>
       {showTaskForm && <TaskForm />}
