@@ -8,9 +8,9 @@ export default function TaskDeleteModal({ taskName, onCancel, onDelete }) {
   }, []);
 
   return (
-    <dialog aria-labelledby="modal-title" onCancel={onCancel} ref={deleteModalRef}>
+    <dialog aria-labelledby="modal-title" aria-describedby="modal-desc" onCancel={onCancel} ref={deleteModalRef}>
       <h2 id="modal-title">Delete Confirmation</h2>
-      <p>Are you sure you want to delete "{taskName}" task?</p>
+      <p id="modal-desc">Are you sure you want to delete "{taskName}" task?</p>
       <div className="cta-wrapper">
         <button 
           onClick={() => {
