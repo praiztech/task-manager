@@ -146,6 +146,8 @@ main {
   border: 0.2rem solid transparent; /* 4 contrast themes */
   border-radius: 0.2rem;
   z-index: 5;
+  display: flex;
+  flex-direction: column;
 }
 
 .task-form-box {
@@ -190,16 +192,20 @@ main {
   height: 100%;
 }
 
-.add-task .prefix {
-  font-weight: 600;
+.task-notification {
+  flex: 1;
 }
 
-.add-task [role="status"] {
+.task-notification [role="status"] {
   color: #003e29;
 }
 
-.add-task .error-text {
+.task-notification .error-text {
   color: #d41c1c;
+}
+
+.task-notification .prefix {
+  font-weight: 600;
 }
 
 .tasks {

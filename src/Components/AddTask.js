@@ -21,7 +21,6 @@ export default function AddTask() {
   function hideTaskFormOnFocusOut(evt) {
     if (
       showTaskForm &&
-      evt.relatedTarget !== null && // 4 when user clicks on the empty space within the form
       !evt.currentTarget.contains(evt.relatedTarget)
     ) setShowTaskForm(false);
   }

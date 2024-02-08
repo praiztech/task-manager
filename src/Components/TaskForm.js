@@ -44,6 +44,7 @@ export default function TaskForm() {
   return (
     <>
       { // live region must always be in DOM to ensure consistent relay of status msg 
+        // prevent task notification taking focus and closing form coz related target will be null
         taskData.submitted === 'blank' ? (
           <form onSubmit={addNewTask}>
             <div className="task-form-box">
@@ -65,10 +66,12 @@ export default function TaskForm() {
                 <AddIcon />
               </button>
             </div>
-            <div role="status"></div>
-            <p className="error-text" id="error-text">
-              <span className="prefix">Error: </span>Task name cannot be blank. Enter a task to add.
-            </p>
+            <div className="task-notification" onPointerDown={(evt) => evt.preventDefault()}>
+              <div role="status"></div>
+              <p className="error-text" id="error-text">
+                <span className="prefix">Error: </span>Task name cannot be blank. Enter a task to add.
+              </p>
+            </div>
           </form>
         ) : taskData.submitted === 'new' ? (
             <form onSubmit={addNewTask}>
@@ -89,8 +92,10 @@ export default function TaskForm() {
                   <AddIcon />
                 </button>
               </div>
-              <div role="status">
-                <span className="prefix">Success: </span>"{taskData.submittedName}" added. 
+              <div className="task-notification" onPointerDown={(evt) => evt.preventDefault()}>
+                <div role="status">
+                  <span className="prefix">Success: </span>"{taskData.submittedName}" added. 
+                </div>
               </div>
             </form>
           ) : (
@@ -112,7 +117,9 @@ export default function TaskForm() {
                   <AddIcon />
                 </button>
               </div>
-              <div role="status"></div>
+              <div className="task-notification" onPointerDown={(evt) => evt.preventDefault()}>
+                <div role="status"></div>
+              </div>
             </form>
           )
       }
