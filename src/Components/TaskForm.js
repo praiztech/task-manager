@@ -2,7 +2,7 @@ import { AddIcon } from "../icons/Icons";
 import { useState, useRef, useEffect } from "react";
 import { useTasksSetter } from "../context/TasksProvider";
 
-export default function TaskForm() {
+export default function TaskForm({ onFocusOut }) {
   const setTasks = useTasksSetter();
   const [newTaskName, setNewTaskName] = useState(''); // sync input data with state - controlled component
   
@@ -44,9 +44,10 @@ export default function TaskForm() {
   return (
     <>
       { // live region must always be in DOM to ensure consistent relay of status msg 
-        // prevent task notification taking focus and closing form coz related target will be null
+        // prevent task notification taking focus and triggering form onBlur coz related target will be null
+        // thus closing the form
         taskData.submitted === 'blank' ? (
-          <form onSubmit={addNewTask}>
+          <form onSubmit={addNewTask} onBlur={onFocusOut}>
             <div className="task-form-box">
               <div className="task-form-entry-box">
                 <input 
@@ -74,7 +75,7 @@ export default function TaskForm() {
             </div>
           </form>
         ) : taskData.submitted === 'new' ? (
-            <form onSubmit={addNewTask}>
+            <form onSubmit={addNewTask} onBlur={onFocusOut}>
               <div className="task-form-box">
                 <div className="task-form-entry-box">
                   <input 
@@ -99,7 +100,7 @@ export default function TaskForm() {
               </div>
             </form>
           ) : (
-            <form onSubmit={addNewTask}>
+            <form onSubmit={addNewTask} onBlur={onFocusOut}>
               <div className="task-form-box">
                 <div className="task-form-entry-box">
                   <input 

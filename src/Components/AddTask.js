@@ -21,12 +21,13 @@ export default function AddTask() {
   function hideTaskFormOnFocusOut(evt) {
     if (
       showTaskForm &&
-      !evt.currentTarget.contains(evt.relatedTarget)
+      !evt.currentTarget.contains(evt.relatedTarget) &&
+      evt.relatedTarget !== addBtnRef.current
     ) setShowTaskForm(false);
   }
 
   return (
-    <div className="add-task" onBlur={hideTaskFormOnFocusOut}>
+    <div className="add-task">
       <button 
         className="add-task-trigger"
         type="button" 
@@ -37,7 +38,7 @@ export default function AddTask() {
         <ShowIcon />
         Add New Task
       </button>
-      {showTaskForm && <TaskForm />}
+      {showTaskForm && <TaskForm onFocusOut={hideTaskFormOnFocusOut} />}
     </div>
   );
 }
